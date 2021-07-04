@@ -1,16 +1,55 @@
-# musify
+# Musify
+<!-- <p>
+  <img src="./assets/Images/icon.png" width="250" title="">
+</p> -->
 
-A new Flutter application.
+Musify is flutter and firebase based Music player.
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
+### Technology Stack
+[![](https://img.shields.io/badge/Made_with-Flutter-blue?style=for-the-badge&logo=flutter)](https://flutter.dev/docs)
+[![](https://img.shields.io/badge/IDE-Android_Studio-red?style=for-the-badge&logo=android-studio)](https://developer.android.com/studio "Android studio")
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+### Screenshots
+<table>
+  <tr>
+    <td><b>Albums Page</b></td>
+    <td><b>Artist Page</b></td>
+    <td><b>Genre Page</b></td>
+  </tr>  
+<tr>
+    <td><img  src="./Snapshots/Albums.png" width="250" title="" width=270 height=480></td>
+    <td><img src="./Snapshots/Artist.png" width="250" title="" width=270 height=480></td>
+    <td><img src="./Snapshots/Genres.png" width="250" width=270 height=480></td>
+  </tr>  
+  <tr>
+    <td><b>New Release Page</b></td>
+     <td><b>List of Music</b></td>
+     <td><b>Music Player</b></td>
+  </tr> 
+  <tr>
+    <td><img src="./Snapshots/NewRel.png" width="250" title="" width=270 height=480></td>
+    <td><img  src="./Snapshots/MusicList.png" width="250" title="" width=270 height=480></td>
+    <td><img src="./Snapshots/PlayerScreen.png" width="250" width=270 height=480></td>
+  </tr> 
+</table>
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
+### Installation
+
+```sh
+$ cd Musify-main
+$ flutter run
+```
+
+
+### Getting Started
+
+For help getting started with Flutter, view our online
+[documentation](http://flutter.io/).
+
+For help on editing plugin code, view the [documentation](https://flutter.io/platform-plugins/#edit-code).
+
+
+### Show some :heart: and star the repo to support the project
