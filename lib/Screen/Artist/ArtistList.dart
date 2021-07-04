@@ -44,12 +44,13 @@ class _ArtistListState extends State<ArtistList> {
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 35.0,
+                        fontFamily: "DancingScript",
                       )),
                 ),
                 GridView.count(
                     crossAxisCount: 2,
-                    crossAxisSpacing: 10.0,
-                    mainAxisSpacing: 10.0,
+                    crossAxisSpacing: 5.0,
+                    mainAxisSpacing: 5.0,
                     shrinkWrap: true,
                     children: List.generate(dataResponse.length, (index) {
                       return Padding(

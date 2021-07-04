@@ -21,10 +21,12 @@ class _PlayerScreenState extends State<PlayerScreen> {
   initState() {
     super.initState();
     audioCache = AudioCache(fixedPlayer: audioPlayer);
+    initAudio();
   }
 
-  initAudio(String path) async {
-    await audioCache.play(path);
+  initAudio() async {
+    String url = await widget.data[widget.index]["musicUrl"];
+    await audioCache.play(url);
     setState(() {
       _pause = false;
     });
@@ -37,7 +39,6 @@ class _PlayerScreenState extends State<PlayerScreen> {
     audioPlayer.onAudioPositionChanged.listen((position) {
       setState(() {
         _playerPosition = position;
-        // _value = position as int;
       });
     });
   }
@@ -62,8 +63,17 @@ class _PlayerScreenState extends State<PlayerScreen> {
     var _value;
     return Scaffold(
         backgroundColor: Colors.black,
-        appBar:
-            AppBar(title: Text("Musify"), backgroundColor: Colors.green[900]),
+        appBar: AppBar(
+          title: Text("Musify"),
+          backgroundColor: Colors.green[900],
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back),
+            onPressed: () {
+              stopAudio();
+              Navigator.pop(context);
+            },
+          ),
+        ),
         body: SingleChildScrollView(
             child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -91,63 +101,83 @@ class _PlayerScreenState extends State<PlayerScreen> {
                 ),
               ),
               SizedBox(height: 30.0),
-              Row(
-                children: [
-                  Expanded(
-                    child: RaisedButton(
-                        elevation: 0.8,
-                        color: Colors.black,
-                        onPressed: () {},
-                        child:
-                            Icon(Icons.loop, color: Colors.white, size: 35.0)),
-                  ),
-                  Expanded(
-                    child: RaisedButton(
-                        elevation: 0.8,
-                        color: Colors.black,
-                        onPressed: () {},
-                        child: Icon(Icons.replay_10,
-                            color: Colors.white, size: 45.0)),
-                  ),
-                  Expanded(
-                    child: Container(
+              Padding(
+                padding: const EdgeInsets.fromLTRB(8, 0, 8, 0),
+                child: Row(
+                  children: [
+                    // Expanded(
+                    //   child: RaisedButton(
+                    //       elevation: 0.8,
+                    //       color: Colors.black,
+                    //       onPressed: () {},
+                    //       child:
+                    //           Icon(Icons.loop, color: Colors.white, size: 35.0)),
+                    // ),
+                    Expanded(
                       child: RaisedButton(
-                        elevation: 1.0,
-                        color: Colors.black,
-                        onPressed: () {
-                          _pause
-                              ? initAudio(
-                                  songData["musicUrl"],
-                                )
-                              : pauseAudio();
-                        },
-                        child: _pause
-                            ? Icon(Icons.play_circle_fill_sharp,
-                                color: Colors.white, size: 70.0)
-                            : Icon(Icons.pause_circle_filled_sharp,
-                                color: Colors.white, size: 70.0),
+                          elevation: 0.8,
+                          color: Colors.black,
+                          onPressed: () {
+                            stopAudio();
+                            Navigator.pop(context);
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => PlayerScreen(
+                                      data: widget.data,
+                                      index: (widget.index - 1) %
+                                          widget.data.length)),
+                            );
+                          },
+                          child: Icon(Icons.skip_previous,
+                              color: Colors.white, size: 45.0)),
+                    ),
+                    Expanded(
+                      child: Container(
+                        child: RaisedButton(
+                          elevation: 1.0,
+                          color: Colors.black,
+                          onPressed: () {
+                            _pause ? initAudio() : pauseAudio();
+                          },
+                          child: _pause
+                              ? Icon(Icons.play_circle_fill_sharp,
+                                  color: Colors.white, size: 70.0)
+                              : Icon(Icons.pause_circle_filled_sharp,
+                                  color: Colors.white, size: 70.0),
+                        ),
                       ),
                     ),
-                  ),
-                  Expanded(
-                    child: RaisedButton(
+                    Expanded(
+                      child: RaisedButton(
                         elevation: 0.8,
                         color: Colors.black,
                         onPressed: () {
                           stopAudio();
+                          Navigator.pop(context);
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => PlayerScreen(
+                                    data: widget.data,
+                                    index: (widget.index + 1) %
+                                        widget.data.length)),
+                          );
                         },
-                        child: Icon(Icons.forward_10,
-                            color: Colors.white, size: 45.0)),
-                  ),
-                  Expanded(
-                    child: RaisedButton(
-                        elevation: 0.8,
-                        color: Colors.black,
-                        onPressed: () {},
-                        child: Icon(Icons.shuffle,
-                            color: Colors.white, size: 35.0)),
-                  )
-                ],
+                        child: Icon(Icons.skip_next,
+                            color: Colors.white, size: 45.0),
+                      ),
+                    ),
+                    // Expanded(
+                    //   child: RaisedButton(
+                    //       elevation: 0.8,
+                    //       color: Colors.black,
+                    //       onPressed: () {},
+                    //       child: Icon(Icons.shuffle,
+                    //           color: Colors.white, size: 35.0)),
+                    // )
+                  ],
+                ),
               ),
               Padding(
                 padding: const EdgeInsets.fromLTRB(25, 0, 25, 0),

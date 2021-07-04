@@ -39,17 +39,18 @@ class _AlbumListState extends State<AlbumList> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Padding(
-                  padding: const EdgeInsets.fromLTRB(10, 10, 0, 10),
+                  padding: const EdgeInsets.fromLTRB(20, 10, 0, 10),
                   child: Text("Albums",
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 35.0,
+                        fontFamily: "DancingScript",
                       )),
                 ),
                 GridView.count(
                     crossAxisCount: 2,
-                    crossAxisSpacing: 10.0,
-                    mainAxisSpacing: 10.0,
+                    crossAxisSpacing: 5.0,
+                    mainAxisSpacing: 5.0,
                     shrinkWrap: true,
                     children: List.generate(dataResponse.length, (index) {
                       return Padding(

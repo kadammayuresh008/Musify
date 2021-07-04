@@ -35,7 +35,9 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
-          title: Text("Musify"),
+          title: Text(
+            "Musify",
+          ),
           actions: [],
           backgroundColor: Colors.green[900]),
       body: Center(
@@ -47,7 +49,7 @@ class _HomePageState extends State<HomePage> {
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.new_releases),
-            title: Text('New Release'),
+            title: Text('New'),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.album),
@@ -63,7 +65,7 @@ class _HomePageState extends State<HomePage> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.playlist_play),
-            title: Text('My Playlist'),
+            title: Text('Playlist'),
           ),
         ],
         currentIndex: _selectedIndex,
