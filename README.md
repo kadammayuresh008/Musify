@@ -1,7 +1,7 @@
 # Musify
-<!-- <p>
+<p>
   <img src="./assets/Images/icon.png" width="250" title="">
-</p> -->
+</p>
 
 Musify is flutter and firebase based Music player.
 
